@@ -4,13 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { dbService, storageService } from "fbase";
 
 const Nweet = ({nweetObj, isOwner}) => {
-    const [editing, setEditing] = useState(false);              // edit 모드인지 아닌지
-    const [newNweet, setnewNweet] = useState(nweetObj.text);    // input에 입력된 text 업데이트
+    const [editing, setEditing] = useState(false);
+    const [newNweet, setnewNweet] = useState(nweetObj.text);
     const onDeleteClick = async () => {
         const ok = window.confirm("Are you sure you want to delete this nweet?");
         if (ok) {
             await dbService.doc(`nweets/${nweetObj.id}`).delete();
-            // documentPath는 nweet안에 있어.
             await storageService.refFromURL(nweetObj.attachmentUrl).delete();
         }
     };
@@ -18,7 +17,7 @@ const Nweet = ({nweetObj, isOwner}) => {
     const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.doc(`nweets/${nweetObj.id}`).update({
-            text : newNweet         // newNweet은 input에 있는 text
+            text : newNweet
         });
         setEditing(false);
     }

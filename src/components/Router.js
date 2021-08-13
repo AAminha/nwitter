@@ -5,11 +5,8 @@ import Home from "routes/Home";
 import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
 
-// 로그인 여부 전달 (true : 로그인 상태 / false : 로그아웃 상태)
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
-        // 로그인 상태라면 기본 페이지는 Home. Home과 Profile로 들어가는 네비게이션 보여줌.
-        // 로그아웃 상태라면 기본 페이지는 로그인 페이지.
         <Router>
             {isLoggedIn && <Navigation userObj = {userObj} />}
             <Switch>

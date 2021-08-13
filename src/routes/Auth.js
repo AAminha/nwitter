@@ -8,7 +8,7 @@ const Auth = () => {
     const onSocialClick = async (event) => {
         const {
             target : {name}
-        } = event;              // 이건 ES6. 모르면 '모두를 위한 ES6 코스'를 듣기
+        } = event;
         let provider;
         if (name === "google") {
             provider = new firebaseInstance.auth.GoogleAuthProvider();
